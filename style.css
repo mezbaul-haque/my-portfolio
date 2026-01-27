@@ -1,0 +1,37 @@
+body {
+  background-color: hsl(210, 8%, 95%);
+  font-family: monospace;
+}
+
+header {
+  background-color: antiquewhite;
+  width: auto;
+  text-align: center;
+  margin: auto;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+h1 {
+  border: 2px red dashed;
+  padding: 10px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  
+  
+}
+
+.box {
+  margin: 50px;
+  padding: 20px;
+  border: 2px red solid;
+  border-radius: 10px;
+  background: rgb(243, 238, 238);
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.box li {
+  margin: 10px;
+}
