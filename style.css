@@ -1,10 +1,10 @@
 body {
   background-color: hsl(210, 8%, 95%);
-  font-family: monospace;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
 }
 
 header {
-  background-color: antiquewhite;
+  background-color: hsl(39, 100%, 92%);;
   width: auto;
   text-align: center;
   margin: auto;
@@ -19,12 +19,12 @@ h1 {
 main {
   display: flex;
   justify-content: center;
-  
-  
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 50px;
 }
 
 .box {
-  margin: 50px;
   padding: 20px;
   border: 2px red solid;
   border-radius: 10px;
