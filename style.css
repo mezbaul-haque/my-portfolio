@@ -17,6 +17,7 @@ h1 {
 }
 
 main {
+  background: hsl(40, 17%, 61%);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
