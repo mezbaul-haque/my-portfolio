@@ -11,11 +11,24 @@
 <body>
   <!-- Project: Build your first personal website. -->
   <header>
-    <h1>Hi, I&#39;m Mezbaul, crafting my journey as a <span style="color: brown;">web developer</span></h1>
+    <h1>Hi, I&#39;m Mezbaul, crafting my journey as a <span class="heading">web developer</span></h1>
   </header>
   <main>
+    <div id="main">
+      <div class="box">
+        <h2 class="heading">Photo</h2>
+        <img src="assets/mezbaul.webp" alt="mezbaul-haque">
+      </div>
+      <article class="box">
+      <h2 class="heading">Introduction</h2>
+      <ul class="hide">
+        <li>👋 Hi, I&#39;m @mezbaul-haque
+        <li>👀 I&#39;m interested in web development</li>
+        <li>🌱 I&#39;m currently learning HTML & CSS</li>
+      </ul>
+    </article>
     <article class="box">
-      <h2>Skills</h2>
+      <h2 class="heading">Skills</h2>
       <ul>
         <li>HTML</li>
         <li>CSS</li>
@@ -24,18 +37,19 @@
       </ul>
     </article>
     <article class="box">
-      <h2>Projects</h2>
-      <ol>
+      <h2 class="heading">Projects</h2>
+      <ul>
         <li>E-commerce website.</li>
         <li>Blogging website.</li>
         <li>Hospital management website.</li>
-      </ol>
+      </ul>
     </article>
-    <footer class="box">
+    </div>
+    <footer>
       <h2>Contact Me</h2>
-      <address style="font-style: normal;">
-      <p>E-mail Id: <a href="mailto:mezbaul.haque@outlook.com">mezbaul.haque@outlook.com</a></p>
-      <p>Phone: +8801798103045</p>
+      <address class="footer" style="font-style: normal;">
+        <a href="tel:+8801798103045"><img class="footer" src="assets/phone.svg" alt=""></a>
+        <a href="mailto:mezbaul.haque@outlook.com"><img class="footer" src="assets/email.svg" alt=""></a>
       </address>
     </footer>
   </main>
