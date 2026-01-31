@@ -51,6 +51,15 @@ h1 {
   border-radius: 10px;
 }
 
+ul#icon {
+  display: flex;
+  margin: 0;
+}
+
+#icon > li {
+  margin: 5px;
+}
+
 .hide {
   padding: 0;
 }
@@ -75,6 +84,20 @@ footer {
 
 .footer {
   display: flex;
+}
+
+/* .icon {
+  display: flex;
   margin: 5px;
   text-align: center;
+} */
+
+
+img.icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
 }
