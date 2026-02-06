@@ -3,6 +3,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 .heading {
   color: hsla(0, 0%, 100%, 0.849);
   background-color: #3a7ebf;
@@ -16,10 +22,12 @@ header {
   text-align: center;
   margin: auto;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  border-radius: 10px;
 }
 
 h1 {
   border: 2px #3471ab dashed;
+  border-radius: 10px;
   padding: 10px;
 }
 
@@ -30,6 +38,7 @@ h1 {
   gap: 50px;
   margin-top: 50px;
   border: 2px #3471ab dashed;
+  border-radius: 10px;
   padding: 25px;
 }
 
