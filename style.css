@@ -1,49 +1,66 @@
+:root {
+  --fontStack-monospace: "Monaspace Neon", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+}
+
+* {
+  margin: 0;
+}
+
 body {
   background-color: hsl(211, 69%, 91%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--fontStack-monospace);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
+}
+
+.designation {
+  color: hsla(0, 0%, 100%, 0.849);
+  background-color: #3a7ebf;
+  line-height: 3rem;
+  padding: 3px 8px;
+  border-radius: 1rem;
+  text-wrap-mode: nowrap;
 }
 
 .heading {
   color: hsla(0, 0%, 100%, 0.849);
   background-color: #3a7ebf;
-  padding: 0 5px;
-  border-radius: 10px;
-}
-
-header {
-  background-color: hsl(219, 100%, 82%);
-  width: auto;
-  text-align: center;
-  margin: auto;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: .5rem 1rem;
+  border-radius: 1rem;
 }
 
 h1 {
+  width: auto;
+  text-align: center;
+  margin: auto;
+  background-color: hsl(219, 100%, 82%);
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
   border: 2px #3471ab dashed;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 #main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 50px;
-  margin-top: 50px;
+  gap: 1.9rem;
+  margin-top: 3rem;
   border: 2px #3471ab dashed;
-  border-radius: 10px;
-  padding: 25px;
+  border-radius: 1rem;
+  padding: 2rem;
 }
 
 .box {
-  padding: 20px;
+  width: 14rem;
+  height: auto;
+  margin: 0;
+  padding: 1rem;
   border: 2px #3471ab solid;
   border-radius: 10px;
   background: rgb(243, 238, 238);
@@ -55,8 +72,7 @@ h1 {
 }
 
 .box img {
-  height: auto;
-  width: 150px;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -85,14 +101,11 @@ li {
   list-style-type: none;
 }
 
-footer {
-  /* display: flex; */
-  margin-top: 50px;
-  
-}
-
 .footer {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
 }
 
 /* .icon {
@@ -105,8 +118,5 @@ footer {
 img.icon {
   width: 28px;
   height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px;
+  padding: .5rem;
 }
