@@ -11,6 +11,22 @@ body {
   font-family: var(--fontStack-monospace);
 }
 
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -40px;
+  background: #1f4b78;
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 0.5rem;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -46,7 +62,7 @@ body {
   line-height: 3rem;
   padding: 3px 8px;
   border-radius: 1rem;
-  text-wrap-mode: nowrap;
+  white-space: nowrap;
 }
 
 .heading {
@@ -91,6 +107,7 @@ h1 {
 }
 
 .box li {
+  list-style-type: disc;
   margin: 10px;
 }
 
@@ -126,11 +143,7 @@ ul#icon {
 }
 
 ul {
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
+  padding-left: 1.25rem;
 }
 
 .footer {
@@ -212,7 +225,7 @@ li {
 }
 
 .contact-list {
-  padding: 0;
+  padding-left: 1.25rem;
   margin: 1rem 0;
 }
 
