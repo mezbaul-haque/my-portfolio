@@ -120,3 +120,19 @@ img.icon {
   height: 28px;
   padding: .5rem;
 }
+
+.cv-link {
+  display: inline-block;
+  background-color: #3a7ebf;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.cv-link:hover {
+  background-color: #2a5a8f;
+}
