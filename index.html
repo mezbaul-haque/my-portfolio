@@ -5,622 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mezbaul Haque - Engineering Operations Professional">
   <title>Mezbaul Haque | Engineering Operations Professional</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-color: #1e3a5f;
-      --secondary-color: #2d5a8c;
-      --accent-color: #0ea5e9;
-      --light-bg: #f8fafc;
-      --text-dark: #1e293b;
-      --text-gray: #64748b;
-      --border-color: #e2e8f0;
-      --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-      line-height: 1.6;
-      color: var(--text-dark);
-      background-color: #ffffff;
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      padding: 1rem 2rem;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-color);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: var(--text-gray);
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-color);
-    }
-
-    .nav-links .active {
-      color: var(--accent-color);
-      font-weight: 600;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 0.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      width: 25px;
-      height: 3px;
-      background: var(--primary-color);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* Main Content */
-    main {
-      margin-top: 60px;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 6rem 2rem;
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-
-    .hero .title {
-      font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 2rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.75rem 1.75rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background-color: var(--accent-color);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background-color: #0284c7;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-    }
-
-    .btn-secondary {
-      background-color: white;
-      color: var(--primary-color);
-    }
-
-    .btn-secondary:hover {
-      background-color: var(--light-bg);
-      transform: translateY(-2px);
-    }
-
-    /* Container */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Section Styles */
-    section {
-      margin-bottom: 5rem;
-      scroll-margin-top: 80px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      color: var(--primary-color);
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 3px solid var(--accent-color);
-      display: inline-block;
-    }
-
-    /* About Section */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-text p {
-      color: var(--text-gray);
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
-
-    .info-box {
-      background: var(--light-bg);
-      padding: 2rem;
-      border-radius: 0.75rem;
-      border-left: 4px solid var(--accent-color);
-    }
-
-    .info-box h3 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-
-    .info-items {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .info-item {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .info-icon {
-      font-size: 1.5rem;
-      color: var(--accent-color);
-      flex-shrink: 0;
-    }
-
-    .info-content p {
-      margin: 0;
-      color: var(--text-gray);
-      font-size: 0.95rem;
-    }
-
-    /* Experience Section */
-    .experience-timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-
-    .experience-timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--accent-color), var(--border-color));
-    }
-
-    .experience-item {
-      position: relative;
-      padding-bottom: 2.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .experience-item::before {
-      content: '';
-      position: absolute;
-      left: -10px;
-      top: 0;
-      width: 20px;
-      height: 20px;
-      background: var(--accent-color);
-      border: 3px solid white;
-      border-radius: 50%;
-      box-shadow: var(--shadow);
-    }
-
-    .experience-content {
-      background: var(--light-bg);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-    }
-
-    .experience-content:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateX(4px);
-    }
-
-    .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-bottom: 0.75rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .job-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-
-    .company {
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    .date {
-      color: var(--text-gray);
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-
-    .location {
-      color: var(--text-gray);
-      font-size: 0.9rem;
-    }
-
-    .responsibilities {
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    .responsibilities li {
-      color: var(--text-gray);
-      margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .responsibilities li::before {
-      content: '▪';
-      position: absolute;
-      left: 0;
-      color: var(--accent-color);
-    }
-
-    /* Skills Section */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .skill-category {
-      background: var(--light-bg);
-      padding: 2rem;
-      border-radius: 0.75rem;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-    }
-
-    .skill-category:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-    }
-
-    .skill-category h3 {
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .skill-category-icon {
-      font-size: 1.5rem;
-    }
-
-    .skill-list {
-      list-style: none;
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .skill-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: var(--text-gray);
-      padding: 0.5rem 0;
-    }
-
-    .skill-item::before {
-      content: '✓';
-      color: var(--accent-color);
-      font-weight: bold;
-      font-size: 1.2rem;
-    }
-
-    /* Education Section */
-    .education-card {
-      background: var(--light-bg);
-      padding: 2rem;
-      border-radius: 0.75rem;
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--accent-color);
-    }
-
-    .education-card h3 {
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .degree {
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 0.25rem;
-    }
-
-    .institution {
-      color: var(--text-gray);
-      margin-bottom: 0.5rem;
-    }
-
-    .graduation-date {
-      color: var(--accent-color);
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    /* Contact Section */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-item {
-      background: var(--light-bg);
-      padding: 1.5rem;
-      border-radius: 0.75rem;
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-    }
-
-    .contact-item:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px);
-    }
-
-    .contact-icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-      color: var(--accent-color);
-    }
-
-    .contact-label {
-      color: var(--text-gray);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-value {
-      color: var(--text-dark);
-      font-weight: 600;
-      text-decoration: none;
-      word-break: break-word;
-    }
-
-    .contact-value:hover {
-      color: var(--accent-color);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--primary-color);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      margin-top: 5rem;
-    }
-
-    footer p {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .social-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    .social-links a:hover {
-      color: var(--accent-color);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      nav {
-        padding: 1rem;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 2rem;
-        min-width: 250px;
-        box-shadow: var(--shadow-lg);
-        border-radius: 0.5rem;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .hero .title {
-        font-size: 1.2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-      }
-
-      .experience-timeline {
-        padding-left: 1rem;
-      }
-
-      .experience-item::before {
-        left: -8px;
-        width: 16px;
-        height: 16px;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .experience-header {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 1rem;
-      }
-
-      .hero {
-        padding: 3rem 1rem;
-      }
-
-      .hero h1 {
-        font-size: 1.5rem;
-      }
-
-      .hero .title {
-        font-size: 1rem;
-      }
-
-      .btn {
-        padding: 0.6rem 1.25rem;
-        font-size: 0.85rem;
-      }
-
-      .section-title {
-        font-size: 1.3rem;
-      }
-
-      .skill-category {
-        padding: 1.5rem;
-      }
-
-      .about-text p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#home">Skip to content</a>
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <div class="logo">Mezbaul</div>
-      <button class="menu-toggle" id="menuToggle">
+      <a href="#home" class="logo" title="Home">
+        <span class="logo-text">Mezbaul</span>
+        <span class="logo-subtitle">Engineering Operations</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
         <span></span>
         <span></span>
         <span></span>
@@ -629,6 +28,7 @@
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -638,14 +38,14 @@
   <!-- Main Content -->
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
       <div class="hero-content">
         <h1>Mezbaul Haque</h1>
         <p class="title">Engineering Operations Professional</p>
-        <p>3+ years driving operational excellence, technical coordination, and process optimization across cross-functional teams. Bridging technical and business functions to enhance organizational efficiency.</p>
+        <p>5+ years driving operational excellence, technical coordination, and process optimization across cross-functional teams. Bridging technical and business functions to enhance organizational efficiency.</p>
         <div class="cta-buttons">
           <a href="#contact" class="btn btn-primary">Get in Touch</a>
-          <a href="assets/cv-mezbaul.pdf" class="btn btn-secondary" target="_blank">Download CV</a>
+          <a href="assets/cv-mezbaul.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Download CV</a>
         </div>
       </div>
     </section>
@@ -656,7 +56,7 @@
       <div class="about-grid">
         <div class="about-text">
           <p>I'm an Engineering Operations Professional with a proven track record of driving operational excellence and process optimization. My expertise spans office administration, IT management, and cross-functional coordination, with a strong ability to bridge technical and non-technical stakeholders.</p>
-          <p>With 3+ years of experience supporting engineering teams at Chaldal PLC, I've developed a deep understanding of both operational and technical requirements. I'm passionate about streamlining workflows, improving accountability, and fostering a collaborative workplace culture.</p>
+          <p>With 5+ years of experience supporting engineering teams at Chaldal PLC, I've developed a deep understanding of both operational and technical requirements. I'm passionate about streamlining workflows, improving accountability, and fostering a collaborative workplace culture.</p>
           <p>Beyond my operational expertise, I maintain a genuine interest in technology and web fundamentals, enabling me to effectively communicate with technical teams and stay current with industry developments.</p>
         </div>
         <div class="info-box">
@@ -702,7 +102,7 @@
                 <div class="job-title">Executive Coordinator - Engineering Office</div>
                 <div class="company">Chaldal PLC.</div>
               </div>
-              <div style="text-align: right;">
+              <div class="experience-meta">
                 <div class="date">June 2023 - Present</div>
                 <div class="location">Dhaka, Bangladesh</div>
               </div>
@@ -729,7 +129,7 @@
                 <div class="job-title">Tech Ops Executive</div>
                 <div class="company">Chaldal PLC.</div>
               </div>
-              <div style="text-align: right;">
+              <div class="experience-meta">
                 <div class="date">October 2022 - June 2023</div>
                 <div class="location">Jashore, Bangladesh</div>
               </div>
@@ -750,7 +150,7 @@
                 <div class="job-title">Tech Ops Trainee</div>
                 <div class="company">Chaldal PLC.</div>
               </div>
-              <div style="text-align: right;">
+              <div class="experience-meta">
                 <div class="date">March 2021 - October 2022</div>
                 <div class="location">Jashore, Bangladesh</div>
               </div>
@@ -770,7 +170,7 @@
                 <div class="job-title">Customer Service Assistant</div>
                 <div class="company">Unimart Limited</div>
               </div>
-              <div style="text-align: right;">
+              <div class="experience-meta">
                 <div class="date">January 2019 - January 2020</div>
                 <div class="location">Dhaka, Bangladesh</div>
               </div>
@@ -827,6 +227,39 @@
       </div>
     </section>
 
+    <!-- Blog Section -->
+    <section id="blog" class="container">
+      <h2 class="section-title">Blog</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <img src="assets/blog-demo-1.svg" alt="Demo blog cover image for an upcoming operations post" class="blog-image">
+          <div class="blog-body">
+            <p class="blog-meta">Coming Soon</p>
+            <h3 class="blog-title">Building Reliable Team Operations at Scale</h3>
+            <p class="blog-excerpt">A practical breakdown of systems, rituals, and accountability methods that keep execution predictable in fast-moving teams.</p>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="assets/blog-demo-2.svg" alt="Demo blog cover image for an upcoming workflow post" class="blog-image">
+          <div class="blog-body">
+            <p class="blog-meta">Coming Soon</p>
+            <h3 class="blog-title">Workflow Audits: Where Teams Lose Time</h3>
+            <p class="blog-excerpt">A lightweight framework for finding recurring bottlenecks and simplifying handoffs without adding unnecessary process overhead.</p>
+          </div>
+        </article>
+
+        <article class="blog-card">
+          <img src="assets/blog-demo-3.svg" alt="Demo blog cover image for an upcoming documentation post" class="blog-image">
+          <div class="blog-body">
+            <p class="blog-meta">Coming Soon</p>
+            <h3 class="blog-title">Documentation That Teams Actually Use</h3>
+            <p class="blog-excerpt">How to create practical SOPs and operational docs that stay concise, updated, and easy for cross-functional teams to trust.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Education Section -->
     <section id="education" class="container">
       <h2 class="section-title">Education</h2>
@@ -855,7 +288,7 @@
         <div class="contact-item">
           <div class="contact-icon">💼</div>
           <div class="contact-label">LinkedIn</div>
-          <a href="https://linkedin.com/in/mezbaul-haque" target="_blank" class="contact-value">in/mezbaul-haque</a>
+          <a href="https://linkedin.com/in/mezbaul-haque" target="_blank" rel="noopener noreferrer" class="contact-value">in/mezbaul-haque</a>
         </div>
       </div>
     </section>
@@ -863,65 +296,108 @@
 
   <!-- Footer -->
   <footer>
-    <div class="social-links">
-      <a href="mailto:hello@mezbaul.bd">Email</a>
-      <a href="tel:+8801798103045">Phone</a>
-      <a href="https://linkedin.com/in/mezbaul-haque" target="_blank">LinkedIn</a>
-    </div>
     <p>&copy; 2026 Mezbaul Haque. All rights reserved.</p>
-    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Engineering Operations Professional</p>
+    <p class="footer-role">Engineering Operations Professional</p>
   </footer>
 
   <script>
-    // Mobile Menu Toggle
+    const nav = document.querySelector('nav');
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
-    });
-
-    // Active link highlighting on scroll
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
 
-    window.addEventListener('scroll', () => {
+    const closeMenu = () => {
+      navLinks.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const updateActiveSection = () => {
+      const scrollY = window.scrollY;
+      nav.classList.toggle('scrolled', scrollY > 12);
+
       let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 200) {
-          current = section.getAttribute('id');
+      for (const section of sections) {
+        if (scrollY >= section.offsetTop - 200) {
+          current = section.id;
         }
-      });
+      }
 
       navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href').slice(1) === current) {
-          item.classList.add('active');
-        }
+        const isActive = item.getAttribute('href') === `#${current}`;
+        item.classList.toggle('active', isActive);
+      });
+    };
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navItems.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
       });
     });
 
-    // Smooth scroll behavior
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('load', updateActiveSection);
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
       });
     });
+
+    document.addEventListener('click', event => {
+      const clickedInsideNav = nav.contains(event.target);
+      if (!clickedInsideNav) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
+    });
+
+    const revealTargets = document.querySelectorAll(
+      '.hero-content, .about-grid, .experience-item, .skill-category, .blog-card, .education-card, .contact-item'
+    );
+
+    revealTargets.forEach(el => el.classList.add('reveal'));
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+
+      revealTargets.forEach(el => revealObserver.observe(el));
+    } else {
+      revealTargets.forEach(el => el.classList.add('is-visible'));
+    }
   </script>
 </body>
 </html>
