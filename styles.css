@@ -5,8 +5,12 @@
   --ink: #1f2933;
   --ink-soft: #5f6772;
   --line: #e7e8ea;
+  --line-strong: #d7d9dd;
   --accent: #5f8f8a;
   --accent-strong: #4d7a76;
+  --surface-hover: #f8fbfb;
+  --muted-strong: #4b5563;
+  --footer-bg: #2f3d43;
   --hero-start: #2d3a3f;
   --hero-end: #3e5258;
   --on-dark: #f3f4f6;
@@ -155,7 +159,7 @@ nav.scrolled {
 }
 
 .logo:hover {
-  border-color: #d7d9dd;
+  border-color: var(--line-strong);
   background: #f5f9f8;
   transform: translateY(-1px);
 }
@@ -403,7 +407,7 @@ main {
   transform: translateY(-1px);
   border-color: var(--line);
   border-left-color: var(--accent);
-  background-color: #f8fbfb;
+  background-color: var(--surface-hover);
   box-shadow: var(--shadow-md);
 }
 
@@ -426,7 +430,7 @@ main {
 
 .company {
   margin-top: 0.12rem;
-  color: #4b5563;
+  color: var(--muted-strong);
   font-weight: 600;
 }
 
@@ -541,7 +545,7 @@ main {
 }
 
 .degree {
-  color: #4b5563;
+  color: var(--muted-strong);
   font-weight: 700;
 }
 
@@ -671,7 +675,7 @@ main {
 
 footer {
   margin-top: 3.3rem;
-  background: #2f3d43;
+  background: var(--footer-bg);
   color: var(--on-dark);
   padding: 2.6rem 1rem;
 }

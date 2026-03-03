@@ -306,6 +306,7 @@
     const navLinks = document.getElementById('navLinks');
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
+    let scrollTicking = false;
 
     const closeMenu = () => {
       navLinks.classList.remove('active');
@@ -340,8 +341,15 @@
       });
     });
 
-    window.addEventListener('scroll', updateActiveSection, { passive: true });
-    window.addEventListener('load', updateActiveSection);
+    window.addEventListener('scroll', () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      window.requestAnimationFrame(() => {
+        updateActiveSection();
+        scrollTicking = false;
+      });
+    }, { passive: true });
+    updateActiveSection();
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
