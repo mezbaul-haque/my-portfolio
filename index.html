@@ -2,67 +2,926 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mezbaul Haque</title>
-  <link rel="shortcut icon" href="./img/profile-pic.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css" class="rel">
+  <meta name="description" content="Mezbaul Haque - Engineering Operations Professional">
+  <title>Mezbaul Haque | Engineering Operations Professional</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #1e3a5f;
+      --secondary-color: #2d5a8c;
+      --accent-color: #0ea5e9;
+      --light-bg: #f8fafc;
+      --text-dark: #1e293b;
+      --text-gray: #64748b;
+      --border-color: #e2e8f0;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: #ffffff;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .nav-links .active {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Main Content */
+    main {
+      margin-top: 60px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .hero .title {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0284c7;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--light-bg);
+      transform: translateY(-2px);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 5rem;
+      scroll-margin-top: 80px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-gray);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .info-box {
+      background: var(--light-bg);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .info-box h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .info-items {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      font-size: 1.5rem;
+      color: var(--accent-color);
+      flex-shrink: 0;
+    }
+
+    .info-content p {
+      margin: 0;
+      color: var(--text-gray);
+      font-size: 0.95rem;
+    }
+
+    /* Experience Section */
+    .experience-timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-color), var(--border-color));
+    }
+
+    .experience-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-color);
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+    }
+
+    .experience-content {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .experience-content:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateX(4px);
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .job-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .company {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .date {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .location {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+
+    .responsibilities {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .responsibilities li {
+      color: var(--text-gray);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .responsibilities li::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: var(--light-bg);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .skill-category h3 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skill-category-icon {
+      font-size: 1.5rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-gray);
+      padding: 0.5rem 0;
+    }
+
+    .skill-item::before {
+      content: '✓';
+      color: var(--accent-color);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Education Section */
+    .education-card {
+      background: var(--light-bg);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .education-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .degree {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .institution {
+      color: var(--text-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .graduation-date {
+      color: var(--accent-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      background: var(--light-bg);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent-color);
+    }
+
+    .contact-label {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-value {
+      color: var(--text-dark);
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-value:hover {
+      color: var(--accent-color);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 5rem;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        padding: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2rem;
+        min-width: 250px;
+        box-shadow: var(--shadow-lg);
+        border-radius: 0.5rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero .title {
+        font-size: 1.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .experience-timeline {
+        padding-left: 1rem;
+      }
+
+      .experience-item::before {
+        left: -8px;
+        width: 16px;
+        height: 16px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-header {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero {
+        padding: 3rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .hero .title {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.85rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .skill-category {
+        padding: 1.5rem;
+      }
+
+      .about-text p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-  <!-- Project: Build your first personal website. -->
-  <header>
-    <h1>Hi, I&#39;m Mezbaul, crafting my journey as a <span class="designation">web developer</span></h1>
-  </header>
-  <main>
-    <div id="main">
-      <div class="box">
-        <h2 class="heading">Photo</h2>
-        <img src="assets/mezbaul.webp" alt="mezbaul-haque">
-      </div>
-      <article class="box">
-      <h2 class="heading">Introduction</h2>
-      <ul class="hide">
-        <li>👋 Hi, I&#39;m @mezbaul-haque
-        <!-- <li>👀 I&#39;m interested in web development</li> -->
-        <li>🌱 I&#39;m currently learning JavaScript</li>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Mezbaul</div>
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-    </article>
-    <article class="box">
-      <h2 class="heading">Skills</h2>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-      </ul>
-    </article>
-    <article class="box">
-      <h2 class="heading">Projects</h2>
-      <ul>
-        <li>Yearbook website</li>
-        <li>Portfolio website</li>
-        <li>Bus booking website</li>
-      </ul>
-    </article>
-    <!-- <article class="box">
-      <h2 class="heading">Resources</h2>
-      <ul id="icon">
-        <li><a href="https://www.theodinproject.com/" target="_blank"><img class="icon" src="assets/odin-logo.svg" alt="""></a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development" target="_blank"><img class="icon" src="assets/mdn.svg" alt="mdn web dev site"></a></li>
-        <li><a href="https://www.freecodecamp.org/" target="_blank"><img class="icon" src="assets/free-code-camp-svgrepo-com.svg" alt="free code camp site"></a></li>
-      </ul> -->
-    </article>
     </div>
-    <footer>
-      <!-- <h2>Contact Me</h2> -->
-      <address class="footer" style="font-style: normal;">
-        <a href="tel:+8801798103045" target="_blank"><img class="icon" src="assets/phone.svg" alt="phone"></a>
-        <a href="mailto:mezbaul.haque@outlook.com" target="_blank"><img class="icon" src="assets/email.svg" alt="email"></a>
-        <a href="https://github.com/mezbaul-haque" target="_blank"><img class="icon" src="assets/github.svg" alt="github"></a>
-        <a href="https://x.com/mezbaul_haque1" target="_blank"><img class="icon" src="assets/x.svg" alt="x/twitter"></a>
-      </address>
-    </footer>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Mezbaul Haque</h1>
+        <p class="title">Engineering Operations Professional</p>
+        <p>3+ years driving operational excellence, technical coordination, and process optimization across cross-functional teams. Bridging technical and business functions to enhance organizational efficiency.</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn btn-primary">Get in Touch</a>
+          <a href="assets/cv-mezbaul.pdf" class="btn btn-secondary" target="_blank">Download CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm an Engineering Operations Professional with a proven track record of driving operational excellence and process optimization. My expertise spans office administration, IT management, and cross-functional coordination, with a strong ability to bridge technical and non-technical stakeholders.</p>
+          <p>With 3+ years of experience supporting engineering teams at Chaldal PLC, I've developed a deep understanding of both operational and technical requirements. I'm passionate about streamlining workflows, improving accountability, and fostering a collaborative workplace culture.</p>
+          <p>Beyond my operational expertise, I maintain a genuine interest in technology and web fundamentals, enabling me to effectively communicate with technical teams and stay current with industry developments.</p>
+        </div>
+        <div class="info-box">
+          <h3>Quick Facts</h3>
+          <div class="info-items">
+            <div class="info-item">
+              <span class="info-icon">📍</span>
+              <div class="info-content">
+                <p><strong>Location</strong><br>Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">⚡</span>
+              <div class="info-content">
+                <p><strong>Current Role</strong><br>Executive Coordinator - Engineering Office</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">🎓</span>
+              <div class="info-content">
+                <p><strong>Education</strong><br>Bachelor of Honours in Philosophy</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">⌨️</span>
+              <div class="info-content">
+                <p><strong>Typing Speed</strong><br>84 WPM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="experience-content">
+            <div class="experience-header">
+              <div>
+                <div class="job-title">Executive Coordinator - Engineering Office</div>
+                <div class="company">Chaldal PLC.</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="date">June 2023 - Present</div>
+                <div class="location">Dhaka, Bangladesh</div>
+              </div>
+            </div>
+            <ul class="responsibilities">
+              <li>Process engineer leave requests in compliance with HR policies</li>
+              <li>Coordinate office maintenance to ensure cleanliness and optimal functionality</li>
+              <li>Oversee guest house operations, maintaining a welcoming environment for visitors</li>
+              <li>Facilitate seamless onboarding of new engineering team members</li>
+              <li>Manage and track office assets with meticulous inventory control</li>
+              <li>Maintain sufficient stock of essential office supplies</li>
+              <li>Supervise support staff including cleaning personnel and security guards</li>
+              <li>Organize team-building events and activities to strengthen company culture</li>
+              <li>Coordinate ground logistics for international engineers and executives</li>
+              <li>Develop and maintain Standard Operating Procedures (SOPs) for streamlined operations</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-content">
+            <div class="experience-header">
+              <div>
+                <div class="job-title">Tech Ops Executive</div>
+                <div class="company">Chaldal PLC.</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="date">October 2022 - June 2023</div>
+                <div class="location">Jashore, Bangladesh</div>
+              </div>
+            </div>
+            <ul class="responsibilities">
+              <li>Managed data center operations and infrastructure</li>
+              <li>Performed quality assurance testing and monitoring</li>
+              <li>Provided technical support to cross-functional teams</li>
+              <li>Assisted in hiring and recruitment processes for technical roles</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-content">
+            <div class="experience-header">
+              <div>
+                <div class="job-title">Tech Ops Trainee</div>
+                <div class="company">Chaldal PLC.</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="date">March 2021 - October 2022</div>
+                <div class="location">Jashore, Bangladesh</div>
+              </div>
+            </div>
+            <ul class="responsibilities">
+              <li>Conducted quality assurance testing and validation</li>
+              <li>Provided technical support to operational teams</li>
+              <li>Supported recruitment and onboarding initiatives</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-content">
+            <div class="experience-header">
+              <div>
+                <div class="job-title">Customer Service Assistant</div>
+                <div class="company">Unimart Limited</div>
+              </div>
+              <div style="text-align: right;">
+                <div class="date">January 2019 - January 2020</div>
+                <div class="location">Dhaka, Bangladesh</div>
+              </div>
+            </div>
+            <ul class="responsibilities">
+              <li>Delivered structured customer support in a fast-paced retail environment</li>
+              <li>Assisted in daily operational coordination and service quality monitoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><span class="skill-category-icon">🏢</span> Operations & Admin</h3>
+          <ul class="skill-list">
+            <li class="skill-item">Office Administration</li>
+            <li class="skill-item">Asset & Inventory Management</li>
+            <li class="skill-item">Onboarding & HR Compliance</li>
+            <li class="skill-item">Internal Ticket Management</li>
+            <li class="skill-item">Event Organization</li>
+            <li class="skill-item">Team Building</li>
+            <li class="skill-item">Vendor & Staff Supervision</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3><span class="skill-category-icon">⚙️</span> Operations Excellence</h3>
+          <ul class="skill-list">
+            <li class="skill-item">Workforce Monitoring</li>
+            <li class="skill-item">Process Improvement & Optimization</li>
+            <li class="skill-item">Travel & Logistics Coordination</li>
+            <li class="skill-item">SOP Development & Documentation</li>
+            <li class="skill-item">Quality Assurance</li>
+            <li class="skill-item">Cross-functional Coordination</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3><span class="skill-category-icon">💻</span> Technical & Tools</h3>
+          <ul class="skill-list">
+            <li class="skill-item">IT Management</li>
+            <li class="skill-item">Linux Environments</li>
+            <li class="skill-item">Microsoft Office Suite</li>
+            <li class="skill-item">Basic Web Technologies</li>
+            <li class="skill-item">Ticket Management Systems</li>
+            <li class="skill-item">Data Center Operations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="education-card">
+        <h3>Bachelor of Honours</h3>
+        <div class="degree">Philosophy</div>
+        <div class="institution">National University</div>
+        <div class="graduation-date">Graduated: January 2022</div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-label">Email</div>
+          <a href="mailto:hello@mezbaul.bd" class="contact-value">hello@mezbaul.bd</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div class="contact-label">Phone</div>
+          <a href="tel:+8801798103045" class="contact-value">+880 1798 103045</a>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div class="contact-label">LinkedIn</div>
+          <a href="https://linkedin.com/in/mezbaul-haque" target="_blank" class="contact-value">in/mezbaul-haque</a>
+        </div>
+      </div>
+    </section>
   </main>
-  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="social-links">
+      <a href="mailto:hello@mezbaul.bd">Email</a>
+      <a href="tel:+8801798103045">Phone</a>
+      <a href="https://linkedin.com/in/mezbaul-haque" target="_blank">LinkedIn</a>
+    </div>
+    <p>&copy; 2026 Mezbaul Haque. All rights reserved.</p>
+    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Engineering Operations Professional</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Active link highlighting on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
