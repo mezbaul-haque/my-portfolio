@@ -695,11 +695,6 @@ footer p {
   color: rgba(243, 244, 246, 0.9);
 }
 
-.footer-role {
-  margin-top: 0.45rem;
-  font-size: 0.86rem;
-}
-
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--accent);
