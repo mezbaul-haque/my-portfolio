@@ -4,42 +4,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Mezbaul Haque - Engineering Operations Professional">
+  <meta name="keywords" content="Mezbaul Haque, engineering operations, operations professional, portfolio, Dhaka">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Mezbaul Haque">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="format-detection" content="telephone=no, email=no, address=no">
+  <meta name="application-name" content="Mezbaul Haque Portfolio">
   <meta name="theme-color" content="#2f3d43">
   <meta name="color-scheme" content="light">
   <title>Mezbaul Haque | Engineering Operations Professional</title>
 
   <link rel="canonical" href="https://mezbaul.bd/">
+  <link rel="alternate" hreflang="en" href="https://mezbaul.bd/">
+  <link rel="alternate" hreflang="x-default" href="https://mezbaul.bd/">
 
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Mezbaul Haque">
   <meta property="og:title" content="Mezbaul Haque | Engineering Operations Professional">
   <meta property="og:description" content="Engineering operations portfolio featuring experience, skills, and contact information.">
   <meta property="og:url" content="https://mezbaul.bd/">
-  <meta property="og:image" content="https://mezbaul.bd/assets/mezbaul.webp">
-  <meta property="og:image:alt" content="Portrait of Mezbaul Haque">
+  <meta property="og:image" content="https://mezbaul.bd/assets/blog-demo-1.svg">
+  <meta property="og:image:alt" content="Preview graphic for Mezbaul Haque portfolio">
 
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://mezbaul.bd/">
   <meta name="twitter:title" content="Mezbaul Haque | Engineering Operations Professional">
   <meta name="twitter:description" content="Engineering operations portfolio featuring experience, skills, and contact information.">
-  <meta name="twitter:image" content="https://mezbaul.bd/assets/mezbaul.webp">
+  <meta name="twitter:image" content="https://mezbaul.bd/assets/blog-demo-1.svg">
 
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#home">Skip to content</a>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <!-- Navigation -->
-  <nav>
+  <nav aria-label="Primary navigation">
     <div class="nav-container">
       <a href="#home" class="logo" title="Home">
         <span class="logo-text">Mezbaul</span>
         <span class="logo-subtitle">Engineering Operations</span>
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
         <span></span>
         <span></span>
         <span></span>
@@ -56,7 +65,7 @@
   </nav>
 
   <!-- Main Content -->
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-content">
@@ -103,7 +112,7 @@
             <div class="info-item">
               <span class="info-icon">⌨️</span>
               <div class="info-content">
-                <p><strong>Typing Speed</strong><br>84 WPM</p>
+                <p><strong>Typing Speed</strong><br>84 WPM (Max)</p>
               </div>
             </div>
           </div>
@@ -252,7 +261,7 @@
       <h2 class="section-title">Blog</h2>
       <div class="blog-grid">
         <article class="blog-card">
-          <img src="assets/blog-demo-1.svg" alt="Demo blog cover image for an upcoming operations post" class="blog-image">
+          <img src="assets/blog-demo-1.svg" alt="Demo blog cover image for an upcoming operations post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async">
           <div class="blog-body">
             <p class="blog-meta">Coming Soon</p>
             <h3 class="blog-title">Building Reliable Team Operations at Scale</h3>
@@ -261,7 +270,7 @@
         </article>
 
         <article class="blog-card">
-          <img src="assets/blog-demo-2.svg" alt="Demo blog cover image for an upcoming workflow post" class="blog-image">
+          <img src="assets/blog-demo-2.svg" alt="Demo blog cover image for an upcoming workflow post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async">
           <div class="blog-body">
             <p class="blog-meta">Coming Soon</p>
             <h3 class="blog-title">Workflow Audits: Where Teams Lose Time</h3>
@@ -270,7 +279,7 @@
         </article>
 
         <article class="blog-card">
-          <img src="assets/blog-demo-3.svg" alt="Demo blog cover image for an upcoming documentation post" class="blog-image">
+          <img src="assets/blog-demo-3.svg" alt="Demo blog cover image for an upcoming documentation post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async">
           <div class="blog-body">
             <p class="blog-meta">Coming Soon</p>
             <h3 class="blog-title">Documentation That Teams Actually Use</h3>
@@ -347,6 +356,11 @@
       navItems.forEach(item => {
         const isActive = item.getAttribute('href') === `#${current}`;
         item.classList.toggle('active', isActive);
+        if (isActive) {
+          item.setAttribute('aria-current', 'page');
+        } else {
+          item.removeAttribute('aria-current');
+        }
       });
     };
 
