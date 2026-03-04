@@ -31,7 +31,7 @@
 }
 
 html {
-  scroll-padding-top: 92px;
+  scroll-padding-top: 0;
 }
 
 body {
@@ -71,7 +71,7 @@ a {
 
 section {
   margin-bottom: 2.2rem;
-  scroll-margin-top: 96px;
+  scroll-margin-top: 86px;
 }
 
 #about,
@@ -637,7 +637,7 @@ main {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -667,8 +667,19 @@ main {
 }
 
 .contact-icon {
-  font-size: 1.55rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-soft);
   margin-bottom: 0.3rem;
+}
+
+.contact-icon-svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
 .contact-label {
@@ -700,32 +711,6 @@ footer {
 footer p {
   text-align: center;
   color: rgba(243, 244, 246, 0.9);
-}
-
-.footer-link-row {
-  margin-top: 0.45rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.footer-link-row a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: rgba(243, 244, 246, 0.9);
-  text-decoration: none;
-}
-
-.footer-social-icon {
-  width: 0.95rem;
-  height: 0.95rem;
-  fill: currentColor;
-}
-
-.footer-link-row a:hover {
-  color: rgba(243, 244, 246, 0.95);
 }
 
 a:focus-visible,
