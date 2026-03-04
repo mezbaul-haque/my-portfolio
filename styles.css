@@ -454,6 +454,11 @@ main {
   border-radius: 999px;
 }
 
+.location {
+  width: fit-content;
+  justify-self: end;
+}
+
 .responsibilities {
   list-style: none;
   display: grid;
@@ -602,6 +607,8 @@ main {
 
 .blog-meta {
   display: inline-block;
+  align-self: flex-start;
+  width: fit-content;
   font-size: 0.76rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -693,6 +700,32 @@ footer {
 footer p {
   text-align: center;
   color: rgba(243, 244, 246, 0.9);
+}
+
+.footer-link-row {
+  margin-top: 0.45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.footer-link-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: rgba(243, 244, 246, 0.9);
+  text-decoration: none;
+}
+
+.footer-social-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: currentColor;
+}
+
+.footer-link-row a:hover {
+  color: rgba(243, 244, 246, 0.95);
 }
 
 a:focus-visible,
@@ -795,6 +828,10 @@ button:focus-visible {
   .date,
   .location {
     width: fit-content;
+  }
+
+  .location {
+    justify-self: start;
   }
 }
 
