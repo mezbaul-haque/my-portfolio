@@ -41,6 +41,7 @@ jobs:
             --no-progress
             --accept 200,206,429
             --exclude '^(tel:|mailto:)'
+            --exclude '^https?://(www\.)?linkedin\.com/.*'
             index.html README.md
 
   lighthouse:
