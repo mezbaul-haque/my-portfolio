@@ -32,6 +32,7 @@
 
 html {
   scroll-padding-top: 0;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -718,8 +719,16 @@ footer p {
 a:focus-visible,
 button:focus-visible {
   outline: 3px solid var(--accent);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: 8px;
+}
+
+.nav-links a:focus-visible,
+.btn:focus-visible,
+.logo:focus-visible,
+.menu-toggle:focus-visible,
+.contact-value:focus-visible {
+  box-shadow: 0 0 0 4px rgba(95, 143, 138, 0.24);
 }
 
 .reveal {

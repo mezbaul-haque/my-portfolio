@@ -25,12 +25,18 @@
   <meta property="og:description" content="Engineering operations portfolio highlighting office operations, onboarding, logistics coordination, SOP development, and process improvement.">
   <meta property="og:url" content="https://mezbaul.bd/">
   <meta property="og:image" content="https://mezbaul.bd/assets/blog-demo-1.svg">
+  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="700">
   <meta property="og:image:alt" content="Preview graphic for Mezbaul Haque portfolio">
+  <meta property="og:updated_time" content="2026-03-07">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://mezbaul.bd/">
   <meta name="twitter:title" content="Mezbaul Haque | Engineering Operations Portfolio">
   <meta name="twitter:description" content="Engineering operations portfolio highlighting office operations, onboarding, logistics coordination, SOP development, and process improvement.">
+  <meta name="twitter:image" content="https://mezbaul.bd/assets/blog-demo-1.svg">
+  <meta name="twitter:image:alt" content="Preview graphic for Mezbaul Haque portfolio">
 
   <script type="application/ld+json">
     {
@@ -65,11 +71,27 @@
       ]
     }
   </script>
-  <meta name="twitter:image" content="https://mezbaul.bd/assets/blog-demo-1.svg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Mezbaul Haque Portfolio",
+      "url": "https://mezbaul.bd/",
+      "description": "Personal portfolio for Mezbaul Haque, Engineering Operations Professional.",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Mezbaul Haque"
+      }
+    }
+  </script>
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="styles.css" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -78,7 +100,7 @@
   <!-- Navigation -->
   <nav aria-label="Primary navigation">
     <div class="nav-container">
-      <a href="#home" class="logo" title="Home">
+      <a href="#home" class="logo" title="Home" aria-label="Go to home section">
         <span class="logo-text">Mezbaul</span>
         <span class="logo-subtitle">Engineering Operations</span>
       </a>
@@ -295,7 +317,7 @@
       <h2 class="section-title">Blog</h2>
       <div class="blog-grid">
         <article class="blog-card">
-          <img src="assets/blog-demo-1.svg" alt="Demo blog cover image for an upcoming engineering office operations post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async">
+          <img src="assets/blog-demo-1.svg" alt="Demo blog cover image for an upcoming engineering office operations post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async" fetchpriority="low">
           <div class="blog-body">
             <p class="blog-meta">Coming Soon</p>
             <h3 class="blog-title">How I Run Engineering Office Operations Day to Day</h3>
@@ -304,7 +326,7 @@
         </article>
 
         <article class="blog-card">
-          <img src="assets/blog-demo-2.svg" alt="Demo blog cover image for an upcoming onboarding and logistics post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async">
+          <img src="assets/blog-demo-2.svg" alt="Demo blog cover image for an upcoming onboarding and logistics post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async" fetchpriority="low">
           <div class="blog-body">
             <p class="blog-meta">Coming Soon</p>
             <h3 class="blog-title">Onboarding, Guest House, and Travel Logistics Playbook</h3>
@@ -313,7 +335,7 @@
         </article>
 
         <article class="blog-card">
-          <img src="assets/blog-demo-3.svg" alt="Demo blog cover image for an upcoming SOP and inventory management post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async">
+          <img src="assets/blog-demo-3.svg" alt="Demo blog cover image for an upcoming SOP and inventory management post" class="blog-image" width="1200" height="700" loading="lazy" decoding="async" fetchpriority="low">
           <div class="blog-body">
             <p class="blog-meta">Coming Soon</p>
             <h3 class="blog-title">SOPs and Inventory Control for Better Accountability</h3>
@@ -391,6 +413,7 @@
     const navLinks = document.getElementById('navLinks');
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let scrollTicking = false;
     const supportsObserver = 'IntersectionObserver' in window;
 
@@ -418,7 +441,7 @@
 
     const updateActiveSectionFromScroll = () => {
       const scrollY = window.scrollY;
-      let current = '';
+      let current = sections[0] ? sections[0].id : '';
       for (const section of sections) {
         if (scrollY >= section.offsetTop - 200) {
           current = section.id;
@@ -481,7 +504,7 @@
 
         window.scrollTo({
           top: Math.max(targetTop, 0),
-          behavior: 'smooth'
+          behavior: prefersReducedMotion ? 'auto' : 'smooth'
         });
       });
     });
