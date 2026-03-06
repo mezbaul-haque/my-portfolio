@@ -70,7 +70,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -392,23 +392,14 @@
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
     let scrollTicking = false;
+    const supportsObserver = 'IntersectionObserver' in window;
 
     const closeMenu = () => {
       navLinks.classList.remove('active');
       menuToggle.setAttribute('aria-expanded', 'false');
     };
 
-    const updateActiveSection = () => {
-      const scrollY = window.scrollY;
-      nav.classList.toggle('scrolled', scrollY > 12);
-
-      let current = '';
-      for (const section of sections) {
-        if (scrollY >= section.offsetTop - 200) {
-          current = section.id;
-        }
-      }
-
+    const setActiveNav = current => {
       navItems.forEach(item => {
         const isActive = item.getAttribute('href') === `#${current}`;
         item.classList.toggle('active', isActive);
@@ -418,6 +409,22 @@
           item.removeAttribute('aria-current');
         }
       });
+    };
+
+    const syncNavState = () => {
+      const scrollY = window.scrollY;
+      nav.classList.toggle('scrolled', scrollY > 12);
+    };
+
+    const updateActiveSectionFromScroll = () => {
+      const scrollY = window.scrollY;
+      let current = '';
+      for (const section of sections) {
+        if (scrollY >= section.offsetTop - 200) {
+          current = section.id;
+        }
+      }
+      setActiveNav(current);
     };
 
     menuToggle.addEventListener('click', () => {
@@ -435,11 +442,30 @@
       if (scrollTicking) return;
       scrollTicking = true;
       window.requestAnimationFrame(() => {
-        updateActiveSection();
+        syncNavState();
+        if (!supportsObserver) {
+          updateActiveSectionFromScroll();
+        }
         scrollTicking = false;
       });
     }, { passive: true });
-    updateActiveSection();
+
+    if (supportsObserver) {
+      const activeSectionObserver = new IntersectionObserver(entries => {
+        const visibleEntries = entries.filter(entry => entry.isIntersecting);
+        if (!visibleEntries.length) return;
+        visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        setActiveNav(visibleEntries[0].target.id);
+      }, {
+        rootMargin: '-42% 0px -48% 0px',
+        threshold: [0.15, 0.35, 0.6]
+      });
+
+      sections.forEach(section => activeSectionObserver.observe(section));
+    } else {
+      updateActiveSectionFromScroll();
+    }
+    syncNavState();
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {

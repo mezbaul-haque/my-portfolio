@@ -35,7 +35,7 @@ html {
 }
 
 body {
-  font-family: "Manrope", "IBM Plex Sans", "Segoe UI", sans-serif;
+  font-family: "Manrope", "Segoe UI", sans-serif;
   line-height: 1.65;
   color: var(--ink);
   background: var(--bg);
@@ -85,6 +85,8 @@ section {
   border-radius: 22px;
   padding: clamp(1.2rem, 0.7rem + 1.6vw, 2rem);
   box-shadow: var(--shadow-sm);
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 .section-title {
