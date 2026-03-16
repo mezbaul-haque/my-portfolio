@@ -413,9 +413,10 @@
     const navLinks = document.getElementById('navLinks');
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav-link');
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let scrollTicking = false;
-    const supportsObserver = 'IntersectionObserver' in window;
+    const navOffset = () => nav.offsetHeight + 8;
 
     const closeMenu = () => {
       navLinks.classList.remove('active');
@@ -435,19 +436,22 @@
     };
 
     const syncNavState = () => {
-      const scrollY = window.scrollY;
-      nav.classList.toggle('scrolled', scrollY > 12);
+      nav.classList.toggle('scrolled', window.scrollY > 12);
     };
 
-    const updateActiveSectionFromScroll = () => {
-      const scrollY = window.scrollY;
+    const getCurrentSectionId = () => {
       let current = sections[0] ? sections[0].id : '';
+      const offset = navOffset() + 12;
       for (const section of sections) {
-        if (scrollY >= section.offsetTop - 200) {
+        if (window.scrollY + offset >= section.offsetTop) {
           current = section.id;
         }
       }
-      setActiveNav(current);
+      return current;
+    };
+
+    const updateActiveFromScroll = () => {
+      setActiveNav(getCurrentSectionId());
     };
 
     menuToggle.addEventListener('click', () => {
@@ -455,77 +459,58 @@
       menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
-    navItems.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-      });
-    });
+    navItems.forEach(link => link.addEventListener('click', closeMenu));
 
-    window.addEventListener('scroll', () => {
+    const onScroll = () => {
       if (scrollTicking) return;
       scrollTicking = true;
       window.requestAnimationFrame(() => {
         syncNavState();
-        if (!supportsObserver) {
-          updateActiveSectionFromScroll();
-        }
+        updateActiveFromScroll();
         scrollTicking = false;
       });
-    }, { passive: true });
+    };
 
-    if (supportsObserver) {
-      const activeSectionObserver = new IntersectionObserver(entries => {
-        const visibleEntries = entries.filter(entry => entry.isIntersecting);
-        if (!visibleEntries.length) return;
-        visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        setActiveNav(visibleEntries[0].target.id);
-      }, {
-        rootMargin: '-42% 0px -48% 0px',
-        threshold: [0.15, 0.35, 0.6]
-      });
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-      sections.forEach(section => activeSectionObserver.observe(section));
-    } else {
-      updateActiveSectionFromScroll();
-    }
     syncNavState();
+    updateActiveFromScroll();
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (!href || href === '#') return;
+    const onAnchorClick = event => {
+      const href = event.currentTarget.getAttribute('href');
+      if (!href || href === '#') return;
 
-        const target = document.querySelector(href);
-        if (!target) return;
+      const target = document.querySelector(href);
+      if (!target) return;
 
-        e.preventDefault();
-        const navOffset = nav.offsetHeight + 8;
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - navOffset;
+      event.preventDefault();
+      setActiveNav(target.id);
 
-        window.scrollTo({
-          top: Math.max(targetTop, 0),
-          behavior: prefersReducedMotion ? 'auto' : 'smooth'
-        });
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - navOffset();
+
+      window.scrollTo({
+        top: Math.max(targetTop, 0),
+        behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
-    });
+    };
+
+    anchorLinks.forEach(anchor => anchor.addEventListener('click', onAnchorClick));
 
     document.addEventListener('click', event => {
-      const clickedInsideNav = nav.contains(event.target);
-      if (!clickedInsideNav) {
+      if (!nav.contains(event.target)) {
         closeMenu();
       }
     });
 
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        closeMenu();
-      }
+      if (event.key === 'Escape') closeMenu();
     });
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         closeMenu();
       }
+      updateActiveFromScroll();
     });
 
     const revealTargets = document.querySelectorAll(
