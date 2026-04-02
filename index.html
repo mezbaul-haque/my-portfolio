@@ -571,6 +571,7 @@
     const setupExperienceShowcase = () => {
       const chapters = document.querySelectorAll('.experience-chapter');
       if (!chapters.length) return;
+      const isMobileExperience = window.matchMedia('(max-width: 768px)');
 
       const stageKicker = document.getElementById('experience-stage-kicker');
       const stagePeriod = document.getElementById('experience-stage-period');
@@ -586,6 +587,8 @@
       const arcCopy1 = document.getElementById('experience-arc-copy-1');
       const arcCopy2 = document.getElementById('experience-arc-copy-2');
       const arcCopy3 = document.getElementById('experience-arc-copy-3');
+      const mobileDetails = document.createElement('div');
+      mobileDetails.className = 'experience-mobile-details';
 
       const fillPills = (target, values) => {
         target.innerHTML = '';
@@ -594,6 +597,58 @@
           pill.textContent = value;
           target.appendChild(pill);
         });
+      };
+
+      const renderMobileDetails = chapter => {
+        const metrics = (chapter.dataset.metrics || '')
+          .split('|')
+          .filter(Boolean)
+          .map(value => `<span>${value}</span>`)
+          .join('');
+
+        const focus = (chapter.dataset.focus || '')
+          .split('|')
+          .filter(Boolean)
+          .map(value => `<span>${value}</span>`)
+          .join('');
+
+        const arcTitles = (chapter.dataset.arcTitles || '').split('|');
+        const arcCopies = (chapter.dataset.arcCopy || '').split('|');
+        const highlights = arcTitles
+          .map((title, index) => {
+            if (!title && !arcCopies[index]) return '';
+            return `
+              <article class="experience-mobile-highlight">
+                <h4>${title || ''}</h4>
+                <p>${arcCopies[index] || ''}</p>
+              </article>
+            `;
+          })
+          .join('');
+
+        mobileDetails.innerHTML = `
+          <div class="experience-mobile-stage">
+            <div class="experience-stage-top">
+              <p class="experience-stage-kicker">${chapter.dataset.kicker || ''}</p>
+              <p class="experience-stage-period">${chapter.dataset.period || ''}</p>
+            </div>
+            <h3>${chapter.dataset.role || ''}</h3>
+            <p class="experience-stage-company">${chapter.dataset.company || ''}</p>
+            <p class="experience-stage-summary">${chapter.dataset.summary || ''}</p>
+            <div class="experience-metrics">${metrics}</div>
+            <div class="experience-panels">
+              <section class="experience-panel">
+                <p class="experience-panel-label">What Changed</p>
+                <p>${chapter.dataset.shift || ''}</p>
+              </section>
+              <section class="experience-panel">
+                <p class="experience-panel-label">Focus Areas</p>
+                <div class="experience-focus-list">${focus}</div>
+              </section>
+            </div>
+            <div class="experience-mobile-highlights">${highlights}</div>
+          </div>
+        `;
       };
 
       const applyChapter = chapter => {
@@ -622,10 +677,19 @@
         [arcCopy1, arcCopy2, arcCopy3].forEach((target, index) => {
           target.textContent = arcCopies[index] || '';
         });
+
+        if (isMobileExperience.matches) {
+          renderMobileDetails(chapter);
+          chapter.insertAdjacentElement('afterend', mobileDetails);
+        } else if (mobileDetails.parentElement) {
+          mobileDetails.remove();
+        }
       };
 
       chapters.forEach((chapter, index) => {
         chapter.addEventListener('click', () => applyChapter(chapter));
+        chapter.addEventListener('mouseenter', () => applyChapter(chapter));
+        chapter.addEventListener('focus', () => applyChapter(chapter));
         chapter.addEventListener('keydown', event => {
           if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp' && event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
             return;
@@ -639,7 +703,17 @@
         });
       });
 
-      applyChapter(document.querySelector('.experience-chapter.active') || chapters[0]);
+      const syncExperienceLayout = () => {
+        applyChapter(document.querySelector('.experience-chapter.active') || chapters[0]);
+      };
+
+      if (typeof isMobileExperience.addEventListener === 'function') {
+        isMobileExperience.addEventListener('change', syncExperienceLayout);
+      } else if (typeof isMobileExperience.addListener === 'function') {
+        isMobileExperience.addListener(syncExperienceLayout);
+      }
+
+      syncExperienceLayout();
     };
 
     setupExperienceShowcase();

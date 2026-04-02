@@ -479,6 +479,7 @@ main {
 .experience-stage {
   padding: 1.6rem;
   border-radius: 24px;
+  min-width: 0;
 }
 
 .experience-stage-top {
@@ -544,6 +545,7 @@ main {
   display: inline-flex;
   align-items: center;
   min-height: 38px;
+  max-width: 100%;
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
   background: #eef5f4;
@@ -551,6 +553,8 @@ main {
   color: var(--accent-strong);
   font-size: 0.86rem;
   font-weight: 700;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .experience-panels {
@@ -565,6 +569,7 @@ main {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--line);
+  min-width: 0;
 }
 
 .experience-panel-label {
@@ -929,13 +934,74 @@ button:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .experience-rail {
+    padding: 1rem;
+  }
+
+  .experience-selector {
+    gap: 0.7rem;
+  }
+
+  .experience-chapter {
+    width: 100%;
+  }
+
   .experience-stage-top {
     flex-direction: column;
     gap: 0.35rem;
   }
 
-  .experience-stage {
-    padding: 1.25rem;
+  .experience-stage,
+  .experience-arc {
+    display: none;
+  }
+
+  .experience-mobile-details {
+    margin-top: -0.1rem;
+  }
+
+  .experience-mobile-stage {
+    padding: 1rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fbfcfb, #ffffff);
+    border: 1px solid var(--line);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .experience-mobile-stage h3 {
+    margin: 0;
+    font-size: clamp(1.55rem, 5.8vw, 2rem);
+    line-height: 1.08;
+  }
+
+  .experience-mobile-highlights {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.95rem;
+  }
+
+  .experience-mobile-highlight {
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+  }
+
+  .experience-mobile-highlight h4 {
+    margin: 0 0 0.35rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .experience-mobile-highlight p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+
+  .experience-metrics,
+  .experience-focus-list {
+    min-width: 0;
   }
 }
 
@@ -964,6 +1030,10 @@ button:focus-visible {
 
   .blog-image {
     height: 180px;
+  }
+
+  .experience-mobile-stage {
+    padding: 0.9rem;
   }
 }
 
