@@ -389,98 +389,215 @@ main {
   color: var(--ink);
 }
 
-.experience-timeline {
-  display: grid;
-  gap: 0.95rem;
+.section-intro {
+  max-width: 70ch;
+  margin: -0.2rem 0 1.4rem;
+  color: var(--ink-soft);
 }
 
-.experience-item {
+.experience-showcase {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.78fr) minmax(0, 1.22fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.experience-rail,
+.experience-stage,
+.experience-arc-card {
+  background: linear-gradient(180deg, var(--surface-alt), var(--surface));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+
+.experience-rail {
+  padding: 1.25rem;
+  border-radius: 20px;
+}
+
+.experience-rail-label {
+  margin: 0 0 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.experience-selector {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.experience-chapter {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  text-align: left;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  cursor: pointer;
+  transition: transform var(--ease-fast), border-color var(--ease-fast), box-shadow var(--ease-fast), background-color var(--ease-fast);
+}
+
+.experience-chapter:hover,
+.experience-chapter:focus-visible,
+.experience-chapter.active {
+  transform: translateY(-1px);
+  border-color: rgba(95, 143, 138, 0.36);
+  background: #f8fbfb;
+  box-shadow: var(--shadow-md);
+  outline: none;
+}
+
+.experience-chapter-year {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--accent-strong);
+  line-height: 1;
+}
+
+.experience-chapter-copy {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.experience-chapter-copy strong {
+  font-size: 0.98rem;
+  color: var(--ink);
+}
+
+.experience-chapter-copy span {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.experience-stage {
+  padding: 1.6rem;
+  border-radius: 24px;
+}
+
+.experience-stage-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.experience-stage-kicker,
+.experience-stage-period {
   margin: 0;
 }
 
-.experience-content {
-  padding: 1.2rem 1.25rem;
-  border-color: var(--line);
-  box-shadow: var(--shadow-sm);
-  border-left: 3px solid #a2a8b0;
-  transition: transform var(--ease-fast), box-shadow var(--ease-fast), border-color var(--ease-fast), background-color var(--ease-fast);
+.experience-stage-kicker,
+.experience-panel-label {
+  font-size: 0.77rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
 }
 
-.experience-content:hover {
-  transform: translateY(-1px);
-  border-color: var(--line);
-  border-left-color: var(--accent);
-  background-color: var(--surface-hover);
-  box-shadow: var(--shadow-md);
-}
-
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.9rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.job-title {
-  font-size: 1.06rem;
+.experience-stage-period {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
   font-weight: 700;
-  color: var(--ink);
-  line-height: 1.35;
 }
 
-.company {
-  margin-top: 0.12rem;
+.experience-stage h3 {
+  font-size: clamp(1.8rem, 1.35rem + 1.8vw, 2.55rem);
+  line-height: 1.08;
+  margin: 0;
+  max-width: 15ch;
+}
+
+.experience-stage-company {
+  margin: 0.85rem 0 0;
   color: var(--muted-strong);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.experience-meta {
-  text-align: right;
-  min-width: 170px;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.date,
-.location {
+.experience-stage-summary {
+  margin: 0.8rem 0 0;
   color: var(--ink-soft);
-  font-size: 0.82rem;
-  line-height: 1.25;
-  letter-spacing: 0.02em;
-  font-weight: 600;
-  padding: 0.28rem 0.55rem;
-  background: var(--surface-alt);
-  border: 1px solid var(--line);
+  max-width: 60ch;
+}
+
+.experience-metrics,
+.experience-focus-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.experience-metrics {
+  margin-top: 1.2rem;
+}
+
+.experience-metrics span,
+.experience-focus-list span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0.45rem 0.8rem;
   border-radius: 999px;
+  background: #eef5f4;
+  border: 1px solid rgba(95, 143, 138, 0.2);
+  color: var(--accent-strong);
+  font-size: 0.86rem;
+  font-weight: 700;
 }
 
-.location {
-  width: fit-content;
-  justify-self: end;
-}
-
-.responsibilities {
-  list-style: none;
+.experience-panels {
   display: grid;
-  gap: 0.35rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.15rem;
 }
 
-.responsibilities li {
+.experience-panel {
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--line);
+}
+
+.experience-panel-label {
+  margin: 0 0 0.65rem;
+}
+
+.experience-panel p {
+  margin: 0;
   color: var(--ink-soft);
-  position: relative;
-  padding-left: 0;
-  font-size: 0.94rem;
-  line-height: 1.55;
 }
 
-.responsibilities li::before {
-  content: "• ";
-  position: static;
-  color: var(--accent);
-  font-weight: 600;
+.experience-arc {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.experience-arc-card {
+  padding: 1.2rem;
+  border-radius: 20px;
+}
+
+.experience-arc-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.experience-arc-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
 }
 
 .skills-grid {
@@ -806,28 +923,19 @@ button:focus-visible {
     height: 200px;
   }
 
-  .experience-timeline {
-    gap: 0.8rem;
+  .experience-showcase,
+  .experience-panels,
+  .experience-arc {
+    grid-template-columns: 1fr;
   }
 
-  .experience-header {
+  .experience-stage-top {
     flex-direction: column;
-    gap: 0.45rem;
-    padding-bottom: 0.6rem;
+    gap: 0.35rem;
   }
 
-  .experience-meta {
-    text-align: left;
-    min-width: 0;
-  }
-
-  .date,
-  .location {
-    width: fit-content;
-  }
-
-  .location {
-    justify-self: start;
+  .experience-stage {
+    padding: 1.25rem;
   }
 }
 
