@@ -87,12 +87,7 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="styles.css" as="style">
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -184,12 +179,11 @@
       <div class="experience-showcase">
         <div class="experience-rail reveal">
           <p class="experience-rail-label">Career Chapters</p>
-          <div class="experience-selector" role="tablist" aria-label="Experience chapters">
+          <div class="experience-selector" aria-label="Experience chapters">
             <button
               class="experience-chapter active"
               type="button"
-              role="tab"
-              aria-selected="true"
+              aria-expanded="true"
               data-kicker="Operations ownership"
               data-period="June 2023 - Present"
               data-role="Executive Coordinator - Engineering Office"
@@ -210,8 +204,7 @@
             <button
               class="experience-chapter"
               type="button"
-              role="tab"
-              aria-selected="false"
+              aria-expanded="false"
               data-kicker="Technical operations"
               data-period="October 2022 - June 2023"
               data-role="Tech Ops Executive"
@@ -232,8 +225,7 @@
             <button
               class="experience-chapter"
               type="button"
-              role="tab"
-              aria-selected="false"
+              aria-expanded="false"
               data-kicker="QA foundation"
               data-period="March 2021 - October 2022"
               data-role="Tech Ops Trainee"
@@ -254,8 +246,7 @@
             <button
               class="experience-chapter"
               type="button"
-              role="tab"
-              aria-selected="false"
+              aria-expanded="false"
               data-kicker="Service foundation"
               data-period="January 2019 - January 2020"
               data-role="Customer Service Assistant"
@@ -462,283 +453,6 @@
     <p>&copy; 2026 Mezbaul Haque. All rights reserved.</p>
   </footer>
 
-  <script>
-    const nav = document.querySelector('nav');
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.nav-link');
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let scrollTicking = false;
-    const navOffset = () => nav.offsetHeight + 8;
-
-    const closeMenu = () => {
-      navLinks.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    };
-
-    const setActiveNav = current => {
-      navItems.forEach(item => {
-        const isActive = item.getAttribute('href') === `#${current}`;
-        item.classList.toggle('active', isActive);
-        if (isActive) {
-          item.setAttribute('aria-current', 'page');
-        } else {
-          item.removeAttribute('aria-current');
-        }
-      });
-    };
-
-    const syncNavState = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 12);
-    };
-
-    const getCurrentSectionId = () => {
-      let current = sections[0] ? sections[0].id : '';
-      const offset = navOffset() + 12;
-      for (const section of sections) {
-        if (window.scrollY + offset >= section.offsetTop) {
-          current = section.id;
-        }
-      }
-      return current;
-    };
-
-    const updateActiveFromScroll = () => {
-      setActiveNav(getCurrentSectionId());
-    };
-
-    menuToggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    navItems.forEach(link => link.addEventListener('click', closeMenu));
-
-    const onScroll = () => {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      window.requestAnimationFrame(() => {
-        syncNavState();
-        updateActiveFromScroll();
-        scrollTicking = false;
-      });
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    syncNavState();
-    updateActiveFromScroll();
-
-    const onAnchorClick = event => {
-      const href = event.currentTarget.getAttribute('href');
-      if (!href || href === '#') return;
-
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      event.preventDefault();
-      setActiveNav(target.id);
-
-      const targetTop = target.getBoundingClientRect().top + window.scrollY - navOffset();
-
-      window.scrollTo({
-        top: Math.max(targetTop, 0),
-        behavior: prefersReducedMotion ? 'auto' : 'smooth'
-      });
-    };
-
-    anchorLinks.forEach(anchor => anchor.addEventListener('click', onAnchorClick));
-
-    document.addEventListener('click', event => {
-      if (!nav.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeMenu();
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        closeMenu();
-      }
-      updateActiveFromScroll();
-    });
-
-    const setupExperienceShowcase = () => {
-      const chapters = document.querySelectorAll('.experience-chapter');
-      if (!chapters.length) return;
-      const isMobileExperience = window.matchMedia('(max-width: 768px)');
-
-      const stageKicker = document.getElementById('experience-stage-kicker');
-      const stagePeriod = document.getElementById('experience-stage-period');
-      const stageRole = document.getElementById('experience-stage-role');
-      const stageCompany = document.getElementById('experience-stage-company');
-      const stageSummary = document.getElementById('experience-stage-summary');
-      const stageShift = document.getElementById('experience-stage-shift');
-      const stageMetrics = document.getElementById('experience-stage-metrics');
-      const stageFocus = document.getElementById('experience-stage-focus');
-      const arcTitle1 = document.getElementById('experience-arc-title-1');
-      const arcTitle2 = document.getElementById('experience-arc-title-2');
-      const arcTitle3 = document.getElementById('experience-arc-title-3');
-      const arcCopy1 = document.getElementById('experience-arc-copy-1');
-      const arcCopy2 = document.getElementById('experience-arc-copy-2');
-      const arcCopy3 = document.getElementById('experience-arc-copy-3');
-      const mobileDetails = document.createElement('div');
-      mobileDetails.className = 'experience-mobile-details';
-
-      const fillPills = (target, values) => {
-        target.innerHTML = '';
-        values.filter(Boolean).forEach(value => {
-          const pill = document.createElement('span');
-          pill.textContent = value;
-          target.appendChild(pill);
-        });
-      };
-
-      const renderMobileDetails = chapter => {
-        const metrics = (chapter.dataset.metrics || '')
-          .split('|')
-          .filter(Boolean)
-          .map(value => `<span>${value}</span>`)
-          .join('');
-
-        const focus = (chapter.dataset.focus || '')
-          .split('|')
-          .filter(Boolean)
-          .map(value => `<span>${value}</span>`)
-          .join('');
-
-        const arcTitles = (chapter.dataset.arcTitles || '').split('|');
-        const arcCopies = (chapter.dataset.arcCopy || '').split('|');
-        const highlights = arcTitles
-          .map((title, index) => {
-            if (!title && !arcCopies[index]) return '';
-            return `
-              <article class="experience-mobile-highlight">
-                <h4>${title || ''}</h4>
-                <p>${arcCopies[index] || ''}</p>
-              </article>
-            `;
-          })
-          .join('');
-
-        mobileDetails.innerHTML = `
-          <div class="experience-mobile-stage">
-            <div class="experience-stage-top">
-              <p class="experience-stage-kicker">${chapter.dataset.kicker || ''}</p>
-              <p class="experience-stage-period">${chapter.dataset.period || ''}</p>
-            </div>
-            <h3>${chapter.dataset.role || ''}</h3>
-            <p class="experience-stage-company">${chapter.dataset.company || ''}</p>
-            <p class="experience-stage-summary">${chapter.dataset.summary || ''}</p>
-            <div class="experience-metrics">${metrics}</div>
-            <div class="experience-panels">
-              <section class="experience-panel">
-                <p class="experience-panel-label">What Changed</p>
-                <p>${chapter.dataset.shift || ''}</p>
-              </section>
-              <section class="experience-panel">
-                <p class="experience-panel-label">Focus Areas</p>
-                <div class="experience-focus-list">${focus}</div>
-              </section>
-            </div>
-            <div class="experience-mobile-highlights">${highlights}</div>
-          </div>
-        `;
-      };
-
-      const applyChapter = chapter => {
-        chapters.forEach(item => {
-          const isActive = item === chapter;
-          item.classList.toggle('active', isActive);
-          item.setAttribute('aria-selected', String(isActive));
-        });
-
-        stageKicker.textContent = chapter.dataset.kicker || '';
-        stagePeriod.textContent = chapter.dataset.period || '';
-        stageRole.textContent = chapter.dataset.role || '';
-        stageCompany.textContent = chapter.dataset.company || '';
-        stageSummary.textContent = chapter.dataset.summary || '';
-        stageShift.textContent = chapter.dataset.shift || '';
-        fillPills(stageMetrics, (chapter.dataset.metrics || '').split('|'));
-        fillPills(stageFocus, (chapter.dataset.focus || '').split('|'));
-
-        const arcTitles = (chapter.dataset.arcTitles || '').split('|');
-        const arcCopies = (chapter.dataset.arcCopy || '').split('|');
-
-        [arcTitle1, arcTitle2, arcTitle3].forEach((target, index) => {
-          target.textContent = arcTitles[index] || '';
-        });
-
-        [arcCopy1, arcCopy2, arcCopy3].forEach((target, index) => {
-          target.textContent = arcCopies[index] || '';
-        });
-
-        if (isMobileExperience.matches) {
-          renderMobileDetails(chapter);
-          chapter.insertAdjacentElement('afterend', mobileDetails);
-        } else if (mobileDetails.parentElement) {
-          mobileDetails.remove();
-        }
-      };
-
-      chapters.forEach((chapter, index) => {
-        chapter.addEventListener('click', () => applyChapter(chapter));
-        chapter.addEventListener('mouseenter', () => applyChapter(chapter));
-        chapter.addEventListener('focus', () => applyChapter(chapter));
-        chapter.addEventListener('keydown', event => {
-          if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp' && event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') {
-            return;
-          }
-
-          event.preventDefault();
-          const direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1;
-          const nextIndex = (index + direction + chapters.length) % chapters.length;
-          chapters[nextIndex].focus();
-          applyChapter(chapters[nextIndex]);
-        });
-      });
-
-      const syncExperienceLayout = () => {
-        applyChapter(document.querySelector('.experience-chapter.active') || chapters[0]);
-      };
-
-      if (typeof isMobileExperience.addEventListener === 'function') {
-        isMobileExperience.addEventListener('change', syncExperienceLayout);
-      } else if (typeof isMobileExperience.addListener === 'function') {
-        isMobileExperience.addListener(syncExperienceLayout);
-      }
-
-      syncExperienceLayout();
-    };
-
-    setupExperienceShowcase();
-
-    const revealTargets = document.querySelectorAll(
-      '.hero-content, .experience-rail, .experience-stage, .experience-arc, .skill-category, .blog-card, .education-card, .contact-item'
-    );
-
-    revealTargets.forEach(el => el.classList.add('reveal'));
-
-    if ('IntersectionObserver' in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
-
-      revealTargets.forEach(el => revealObserver.observe(el));
-    } else {
-      revealTargets.forEach(el => el.classList.add('is-visible'));
-    }
-
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
