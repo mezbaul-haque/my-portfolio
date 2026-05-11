@@ -5,6 +5,6 @@
   <!-- Gold accent border -->
   <rect x="12" y="12" width="168" height="168" fill="none" stroke="#b5842f" stroke-width="10" rx="20"/>
   
-  <!-- MH Monogram in gold -->
-  <text x="96" y="135" font-family="'Playfair Display', Georgia, serif" font-size="110" font-weight="700" fill="#b5842f" text-anchor="middle" letter-spacing="-6">MH</text>
+  <!-- Office worker emoji -->
+  <text x="96" y="140" font-size="120" text-anchor="middle">👨‍💼</text>
 </svg>
