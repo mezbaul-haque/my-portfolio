@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Mezbaul favicon">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#4d7a76"/>
-      <stop offset="1" stop-color="#5f8f8a"/>
-    </linearGradient>
-  </defs>
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#bg)"/>
-  <path d="M16 46V18L32 34L48 18V46" fill="none" stroke="#F3F4F6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Mezbaul Haque favicon">
+  <!-- Charcoal background -->
+  <rect width="192" height="192" fill="#211f1c"/>
+  
+  <!-- Gold accent border -->
+  <rect x="12" y="12" width="168" height="168" fill="none" stroke="#b5842f" stroke-width="10" rx="20"/>
+  
+  <!-- MH Monogram in gold -->
+  <text x="96" y="135" font-family="'Playfair Display', Georgia, serif" font-size="110" font-weight="700" fill="#b5842f" text-anchor="middle" letter-spacing="-6">MH</text>
 </svg>
