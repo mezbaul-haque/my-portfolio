@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found - Mezbaul Haque Portfolio">
+  <title>404 | Page Not Found - Mezbaul Haque</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .error-container {
+      min-height: calc(100vh - 76px);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-content {
+      max-width: 600px;
+    }
+    .error-code {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(6rem, 20vw, 12rem);
+      line-height: 1;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .error-message {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .error-copy {
+      color: var(--ink-soft);
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Mezbaul Haque home">
+        <img class="brand-logo" src="assets/logo.png" alt="Mezbaul Haque logo" width="48" height="48">
+        <span class="brand-copy">
+          <strong>Mezbaul Haque</strong>
+          <span>Dhaka, Bangladesh</span>
+        </span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="error-container">
+      <div class="error-content">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">Something went missing.</h2>
+        <p class="error-copy">The page you are looking for doesn't exist or has been moved. Let's get you back on track.</p>
+        <a class="button button-primary" href="index.html">Return Home</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Mezbaul Haque.</p>
+  </footer>
+</body>
+</html>
